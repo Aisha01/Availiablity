@@ -24,19 +24,23 @@
 			
 				
 				var accessToken = null;
-			
-				var pathArray = type.split( '&' );
+						var pathArray = type.split( '&' );
 				
 					for (i = 0; i < pathArray.length; i++) {
+						
 						
 						var currentItem = pathArray[i];
 						if(i == 2){
 						var splitByEqual = 	currentItem.split('=');
 						console.log(splitByEqual[0]);
+						console.log(splitByEqual[1]);
+						accessToken = splitByEqual[1];
+						
 					
 					}
+					console.log(currentItem);
 					
-						console.log(currentItem);
+					console.log("Access Token is " + accessToken );
 
 					}
 			
