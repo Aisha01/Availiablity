@@ -18,19 +18,15 @@
 		<script>
 		
 				var currentLocation = window.location.href;
-			console.log(currentLocation);
-			var type = window.location.hash.substr(1);
-			console.log(type);
+					console.log(currentLocation);
+				var type = window.location.hash.substr(1);
+					console.log(type);
 			
-			var settings = {
-  
-				"method": "GET"
-				  
-			}
-
-			$.ajax(settings).done(function (response) {
-				console.log(response);
-			});
+				var pathArray = window.location.pathname.split( '&' );
+				
+					for (i = 0; i < pathArray.length; i++) {
+								console.log(pathArray[i]);
+					}
 		
 		</script>
 	
