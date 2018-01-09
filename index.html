@@ -22,11 +22,26 @@
 				var type = window.location.hash.substr(1);
 					console.log(type);
 			
+				
+				var accessToken = null;
+			
 				var pathArray = type.split( '&' );
 				
 					for (i = 0; i < pathArray.length; i++) {
-								console.log(pathArray[i]);
+						console.log(pathArray[i]);
+						
+						var currentItem = pathArray[i];
+						if(currentItem.contains('access_token')){
+						
+							var splitBy=currentItem.split('=');
+							console.log(splitBy[0]);
+							console.log(splitBy[1]);
+							accessToken = splitBy[1];
+						}
+)
 					}
+			
+
 		
 		</script>
 	
