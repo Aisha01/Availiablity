@@ -17,10 +17,20 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script>
 		
-		var currentLocation = window.location.href;
+				var currentLocation = window.location.href;
 			console.log(currentLocation);
 			var type = window.location.hash.substr(1);
 			console.log(type);
+			
+			var settings = {
+  
+				"method": "GET"
+				  
+			}
+
+			$.ajax(settings).done(function (response) {
+				console.log(response);
+			});
 		
 		</script>
 	
