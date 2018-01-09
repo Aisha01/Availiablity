@@ -63,8 +63,14 @@
 					$.ajax({
 							type: 'GET',
 							url: 'https://api.ciscospark.com/v1/memberships',
-							contentType: 'application/json; charset=utf-8',
-							Authorization: auth ,
+							headers : {
+								
+							'contentType': 'application/json; charset=utf-8',
+							'Authorization': auth ,
+							
+							
+							},
+							
 							
 							success: function (r) {
                     //var response = JSON.stringify(r.d);
