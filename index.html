@@ -44,6 +44,50 @@
 
 					}
 			
+			
+			
+			
+					
+					var auth = 'Bearer '+accessToken;
+					
+					
+				$(document).ready(function () {
+					
+					
+					
+				$('#getRooms').on('click', function(){
+					
+					console.log("I am called");
+					alert("hello");
+					
+					$.ajax({
+							type: 'GET',
+							url: 'https://api.ciscospark.com/v1/memberships',
+							contentType: 'application/json; charset=utf-8',
+							Authorization: auth ,
+							
+							success: function (r) {
+                    //var response = JSON.stringify(r.d);
+                    alert(r);
+                    ////console.log(response);
+							},
+							error: function (r) {
+                    alert(r);
+							}
+				
+            });
+					
+		});
+					
+					
+				
+				
+				})
+			
+					
+				
+					
+			
 
 		
 		</script>
