@@ -80,9 +80,9 @@
                 							var objPerson = c.items[i];
 									console.log(objPerson.id);
 									console.log(objPerson.personDisplayName);
-		
-											$('div.rooms').append('<input type="button" name="Message" id=" '+objPerson.roomId+'" value="'+objPerson.roomId+'" class="btn button"/><span class="title">'+ objPerson.personDisplayName+' </span><br />');
-               
+		$('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button"/><span class="title">' + objPerson.personDisplayName + ' </span><br />');
+								
+										
           							  }
 	
 							},
@@ -138,7 +138,9 @@
 		  <input type="button"  id="getRooms" Value="Get Rooms" class="button success" />
         
        			 <div class="rooms">
+					 <div class="chat">
 
+            				</div>
        			 </div>
 			
 
