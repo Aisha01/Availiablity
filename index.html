@@ -103,7 +103,18 @@
 
                                 },
                                 success: function (data) {
-                                    console.log(data);
+                                   console.log(data);
+                                    var d = JSON.stringify(data);
+                                    var c = JSON.parse(d);
+
+                                    for (var i = 0; i < c.length; i++) {
+
+                                        var objChat = c[i];
+                                        var title = objChat.title;
+                                        console.log(title);
+
+
+                                    }
 
                                 },
                                 error: function (data) {
