@@ -111,7 +111,7 @@
                                       console.log(jsonObj.id);
 					console.log(jsonObj.title);
 					
-                                    $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button" onClick="StartChat()"/>');
+                                    $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button" onClick="StartChat('+objPerson.roomId+')"/>');
 
 
                                 },
@@ -141,9 +141,10 @@
 
 				})
 			
-			function StartChat() {
-
-            			console.log(this.id);
+			function StartChat(rid) {
+				
+				var $this = rid;
+            			console.log(rid);
         		}
 			
 		</script>
