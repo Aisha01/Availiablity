@@ -61,7 +61,7 @@
 							url: 'https://api.ciscospark.com/v1/memberships',
 							headers : {
 							'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
-							 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
+							 'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
 							'contentType': 'application/json; charset=utf-8',
 							
 
@@ -76,6 +76,10 @@
 								var c = JSON.parse(s);
 								console.log(c);
 								console.log(c.items.count);
+								$.each(c, function(index, element) {
+  									 console.log(element.items.id);
+									console.log(element.items.personDisplayName);
+});
 							},
 							error: function (r) {
                     						alert('error' + r);
