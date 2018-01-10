@@ -104,12 +104,13 @@
                                 },
                                 success: function (data) {
                                    console.log(data);
-                                    var d = JSON.stringify(data);
-                                    var c = JSON.parse(d);
+                                    var taken = JSON.stringify(data);
+					console.log(taken);
+                                    var d = JSON.parse(taken);
+					console.log(d);
+                                    for (var i = 0; i < d.length; i++) {
 
-                                    for (var i = 0; i < c.length; i++) {
-
-                                        var objChat = c[i];
+                                        var objChat = d[i];
                                         var title = objChat.title;
                                         console.log(title);
 
