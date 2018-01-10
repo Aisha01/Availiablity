@@ -104,18 +104,15 @@
                                 },
                                 success: function (data) {
                                    console.log(data);
-                                    var taken = JSON.stringify(data);
-					console.log(taken);
-                                    var d = JSON.parse(taken);
-					console.log(d);
-                                    for (var i = 0; i < d.length; i++) {
+                                      $.each(data, function (index, value) {
 
-                                        var objChat = d[i];
-                                        var title = objChat.title;
-                                        console.log(title);
+                                        console.log(this.title);
+                                        console.log(data[index].type); //uses the index
+                                        console.log(value.title); //uses the value
+                                        console.log(JSON.stringify(data));
+                                        console.log(data.GetDataResult.type);
 
-
-                                    }
+                                    });
 
                                 },
                                 error: function (data) {
