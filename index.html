@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8"/>
-		<title>Learn AngularJS - Inline Editor</title>
+		<title>Learn Type Specific</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
 
@@ -31,7 +31,7 @@
 						
 						var currentItem = pathArray[i];
 						if(i == 2){
-						var splitByEqual = 	currentItem.split('=');
+						var splitByEqual = currentItem.split('=');
 						console.log(splitByEqual[0]);
 						console.log(splitByEqual[1]);
 						accessToken = splitByEqual[1];
@@ -47,11 +47,16 @@
 					
 					
 				$(document).ready(function () {
+
+					
 					
 				console.log("Access Token is " + accessToken );
 
 					
 				$('#getRooms').on('click', function(){
+					
+					
+              				  $('div.rooms > div.chat').empty();
 					
 					console.log("I am called");
 					alert("hello" + auth);
@@ -71,18 +76,51 @@
 							
 							
 							success: function (r) {
-								console.log(r);
-								var s = JSON.stringify(r);
-								var c = JSON.parse(s);
-								console.log(c);
-								for (var i = 0; i < c.items.length; i++) {
-                							var objPerson = c.items[i];
-									console.log(objPerson.id);
-									console.log(objPerson.personDisplayName);
-			$('div.rooms > div.chat').append('<span class="title">' + objPerson.personDisplayName + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button success"/>');
-														
-										
-          							  }
+								
+                        console.log(r);
+                        var s = JSON.stringify(r);
+                        var c = JSON.parse(s);
+                        console.log(c);
+                        for (var i = 0; i < c.items.length; i++) {
+                            var objPerson = c.items[i];
+                            var roomId = objPerson.roomId;
+
+                            
+                            console.log(objPerson.id);
+                            console.log(objPerson.personDisplayName);
+                            var roomURL = 'https://api.ciscospark.com/v1/rooms/' + roomId;
+                            console.log(roomURL);
+
+                            console.log(url);
+
+                            $.ajax({
+                                type: 'GET',
+                                url: roomURL,
+                                headers: {
+                                    'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
+                                    'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
+                                    'contentType': 'application/json; charset=utf-8',
+                                    'Authorization': auth
+
+                                },
+                                success: function (data) {
+                                    console.log(data);
+
+                                },
+                                error: function (data) {
+
+
+                                }
+
+
+
+
+                            })
+
+                            $('div.rooms > div.chat').append('<span class="title">' + objPerson.personDisplayName + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button"/>');
+                          
+
+                        }
 	
 							},
 							error: function (r) {
@@ -101,9 +139,9 @@
         .chat {
            
             width: 200px;
-            min-height: 80px;
             margin-top: 14px;
             margin-left: 16px;
+	    margin-bottom: 30px;
         }
 
       .btn  {
