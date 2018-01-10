@@ -40,20 +40,16 @@
 					}
 					console.log(currentItem);
 					
-					console.log("Access Token is " + accessToken );
 
 					}
 			
-			
-			
-			
-					
 					var auth = 'Bearer '+accessToken;
 					
 					
 				$(document).ready(function () {
 					
-					
+				console.log("Access Token is " + accessToken );
+
 					
 				$('#getRooms').on('click', function(){
 					
@@ -67,6 +63,8 @@
 							headers : {
 								
 							'contentType': 'application/json; charset=utf-8',
+							'Access-Control-Allow-Origin': '*',
+
 							'Authorization': auth 
 
 							},
