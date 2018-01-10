@@ -62,22 +62,19 @@
 					
 					$.ajax({
 							type: 'GET',
-														url: 'https://api.ciscospark.com/v1/memberships',
-							
+							url: 'https://api.ciscospark.com/v1/memberships',
 							headers : {
 								
 							'contentType': 'application/json; charset=utf-8',
 							'Authorization': auth ,
-								'Access-Control-Allow-Origin':'*'
+							'Access-Control-Allow-Origin':'*'
 
-							
-							
 							},
 							
 							
 							success: function (r) {
                     //var response = JSON.stringify(r.d);
-                    alert(r);
+                   							 alert(r);
                     ////console.log(response);
 							},
 							error: function (r) {
