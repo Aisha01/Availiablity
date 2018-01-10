@@ -72,24 +72,13 @@
 							
 							success: function (r) {
 								console.log(r);
-						
-									 for (var i = 0; i < r.items.length; i++) {
-							 
-								 		console.log(i.id);
-										console.log(i.roomId);
-										 console.log(i.personDisplayName);
-							 
-									 }
-                    						var response = JSON.stringify(r);
-								console.log(response);
-								console.log(response.items.length);
-								for(var property in r) {
-    									console(property + "=" + obj[property]);
-}
-                    ////console.log(response);
+								var s = JSON.stringify(r);
+								var c = JSON.parse(s);
+								console.log(c);
+								console.log(c.items.count);
 							},
 							error: function (r) {
-                    alert('error' + r);
+                    						alert('error' + r);
 							}
 				
            					 });
