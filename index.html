@@ -58,12 +58,11 @@
 					
 					$.ajax({
 							type: 'GET',
-							 crossOrigin: true,
 							url: 'https://api.ciscospark.com/v1/memberships',
 							headers : {
 								
 							'contentType': 'application/json; charset=utf-8',
-							'Access-Control-Allow-Origin': '*',
+							
 
 							'Authorization': auth 
 
@@ -72,11 +71,11 @@
 							
 							success: function (r) {
                     //var response = JSON.stringify(r.d);
-                   							 alert(r);
+                   							 alert('success' + r);
                     ////console.log(response);
 							},
 							error: function (r) {
-                    alert(r);
+                    alert('error' + r);
 							}
 				
             });
