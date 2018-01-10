@@ -111,7 +111,7 @@
                                       console.log(jsonObj.id);
 					console.log(jsonObj.title);
 					
-                                    $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button" onClick="StartChat('+objPerson.roomId+')"/>');
+                                    $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button chat"/>');
 
 
                                 },
@@ -120,13 +120,8 @@
 
                                 }
 
-
-
-
-                            })
-                          
-
-                        }
+                			            })
+                                        		}
 	
 							},
 							error: function (r) {
@@ -136,17 +131,15 @@
            					 });
 					
 					});
-					
-		
-
 				})
 			
-			function StartChat(rid) {
+			$('.btn').on('click', function(){
 				
-				var o = $(rid);
-				console.log(o);
-            			console.log(rid);
-        		}
+				var $this = this; 
+				console.log($this.id)
+			
+			});
+			}
 			
 		</script>
 		
