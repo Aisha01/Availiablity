@@ -75,11 +75,14 @@
 								var s = JSON.stringify(r);
 								var c = JSON.parse(s);
 								console.log(c);
-								console.log(c.items.count);
-								$.each(c, function(index, element) {
-  									 console.log(element.items.id);
-									console.log(element.items.personDisplayName);
-});
+								for (var i = 0; i < jsonDataReceived.items.length; i++) {
+                var objPerson = jsonDataReceived.items[i];
+									console.log(objPerson.id);
+									console.log(objPerson.personDisplayName);
+
+               
+            }
+	
 							},
 							error: function (r) {
                     						alert('error' + r);
