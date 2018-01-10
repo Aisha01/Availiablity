@@ -7,6 +7,7 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
 
+		 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet">
 		<!-- The main CSS file -->
 		<link href="style.css" rel="stylesheet" />
 
@@ -95,6 +96,21 @@
 				})
 			
 		</script>
+		
+	<style type="text/css">
+        .rooms {
+            border: 1px solid indianred;
+            width: 200px;
+            min-height: 80px;
+            margin-top: 14px;
+            margin-left: 16px;
+        }
+
+      .btn  {
+            margin-left: 113px;
+            margin-top: 48px;
+        }
+    </style>
 	
 	</head>
 
@@ -118,8 +134,16 @@
 			 the showtooltip varaible -->
 			<p ng-click="toggleTooltip($event)">{{value}}</p>
 			
+		  <input type="button"  id="getRooms" Value="Get Rooms" class="button success" />
+        
+       			 <div class="rooms">
+           			 <span class="title">
+
+            			</span>
+           			 <input type="button" value="Messages" id="" class="button btn" />
+
+        </div>
 			
-						<input type="button" Text = "GET Rooms" id="getRooms" Value="Get Rooms"/>
 
 		</div>
 
