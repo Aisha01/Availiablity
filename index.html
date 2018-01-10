@@ -72,7 +72,10 @@
 							
 							success: function (r) {
                     //var response = JSON.stringify(r.d);
-                   							 alert('success' + r);
+                   							 alert('success');
+								for(var property in obj) {
+    									console(property + "=" + obj[property]);
+}
                     ////console.log(response);
 							},
 							error: function (r) {
