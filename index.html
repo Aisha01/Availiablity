@@ -62,11 +62,14 @@
 					
 					$.ajax({
 							type: 'GET',
-							url: 'https://api.ciscospark.com/v1/memberships',
+														url: 'https://api.ciscospark.com/v1/memberships',
+							
 							headers : {
 								
 							'contentType': 'application/json; charset=utf-8',
 							'Authorization': auth ,
+								'Access-Control-Allow-Origin':'*'
+
 							
 							
 							},
