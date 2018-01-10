@@ -16,66 +16,66 @@
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script>
-		
-				var currentLocation = window.location.href;
-					console.log(currentLocation);
-				var type = window.location.hash.substr(1);
-					console.log(type);
+
+        var currentLocation = window.location.href;
+        console.log(currentLocation);
+        var type = window.location.hash.substr(1);
+        console.log(type);
 			
 				
-				var accessToken = null;
-						var pathArray = type.split( '&' );
+        var accessToken = null;
+        var pathArray = type.split( '&' );
 				
-					for (i = 0; i < pathArray.length; i++) {
+        for (i = 0; i < pathArray.length; i++) {
 						
 						
-						var currentItem = pathArray[i];
-						if(i == 2){
-						var splitByEqual = currentItem.split('=');
-						console.log(splitByEqual[0]);
-						console.log(splitByEqual[1]);
-						accessToken = splitByEqual[1];
+            var currentItem = pathArray[i];
+            if(i == 2){
+                var splitByEqual = currentItem.split('=');
+                console.log(splitByEqual[0]);
+                console.log(splitByEqual[1]);
+                accessToken = splitByEqual[1];
 						
 					
-					}
-					console.log(currentItem);
+            }
+            console.log(currentItem);
 					
 
-					}
+        }
 			
-					var auth = 'Bearer '+accessToken;
+        var auth = 'Bearer '+accessToken;
 					
 					
-				$(document).ready(function () {
+        $(document).ready(function () {
 
 					
 					
-				console.log("Access Token is " + accessToken );
+            console.log("Access Token is " + accessToken );
 
 					
-				$('#getRooms').on('click', function(){
+            $('#getRooms').on('click', function(){
 					
 					
-              				  $('div.rooms > div.chat').empty();
+                $('div.rooms > div.chat').empty();
 					
-					console.log("I am called");
-					alert("hello" + auth);
+                console.log("I am called");
+                alert("hello" + auth);
 					
-					$.ajax({
-							type: 'GET',
-							url: 'https://api.ciscospark.com/v1/memberships',
-							headers : {
-							'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
-							 'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
-							'contentType': 'application/json; charset=utf-8',
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.ciscospark.com/v1/memberships',
+                    headers : {
+                        'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
+                        'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
+                        'contentType': 'application/json; charset=utf-8',
 							
 
-							'Authorization': auth 
+                        'Authorization': auth 
 
-							},
+                    },
 							
 							
-							success: function (r) {
+                    success: function (r) {
 								
                         console.log(r);
                         var s = JSON.stringify(r);
@@ -103,13 +103,13 @@
 
                                 },
                                 success: function (data) {
-                                   console.log(data);
-					var stringify = JSON.stringify(data);
+                                    console.log(data);
+                                    var stringify = JSON.stringify(data);
 					
-					  var jsonObj = JSON.parse(stringify);
+                                    var jsonObj = JSON.parse(stringify);
 					
-                                      console.log(jsonObj.id);
-					console.log(jsonObj.title);
+                                    console.log(jsonObj.id);
+                                    console.log(jsonObj.title);
 					
                                     $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button chat"/>');
 
@@ -120,28 +120,33 @@
 
                                 }
 
-                			            })
-                                        		}
+                            })
+                        }
 	
-							},
-							error: function (r) {
-                    						alert('error' + r);
-							}
+                    },
+                    error: function (r) {
+                        alert('error' + r);
+                    }
 				
-           					 });
+                });
 					
-					});
-				})
+            });
+
+
+            $('.btn').on('click', function () {
+
+                var $this = this;
+                console.log($this.id)
+
+            });
+        })
 			
-			$('.btn').on('click', function(){
-				
-				var $this = this; 
-				console.log($this.id)
-			
-			});
-			}
-			
-		</script>
+       
+
+
+
+
+    </script>
 		
 	<style type="text/css">
         .chat {
