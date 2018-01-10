@@ -112,7 +112,8 @@
                                     console.log(jsonObj.title);
 					
                                     $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button chat"/>');
-
+				
+		
 
                                 },
                                 error: function (data) {
@@ -132,13 +133,8 @@
 					
             });
 
-
-            $('.btn').on('click', function () {
-
-                var $this = this;
-                console.log($this.id)
-
-            });
+		$('.chat').on('click',function(){var change = this; console.log(change.id);});
+		
         })
 			
        
