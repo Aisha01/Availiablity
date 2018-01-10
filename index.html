@@ -113,6 +113,8 @@
 					
                                     $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
 				
+					
+				    $('.btnMsg').on('click',function(){var change = this; console.log(change.id);});
 		
 
                                 },
@@ -133,7 +135,6 @@
 					
             });
 
-		$('.chat').on('click',function(){var change = this; console.log(change.id);});
 		
         })
 			
