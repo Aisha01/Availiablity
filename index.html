@@ -104,15 +104,12 @@
                                 },
                                 success: function (data) {
                                    console.log(data);
-                                      $.each(data, function (index, value) {
-
-                                        console.log(this.title);
-                                        console.log(data[index].type); //uses the index
-                                        console.log(value.title); //uses the value
-                                        console.log(JSON.stringify(data));
-                                        console.log(data.GetDataResult.title);
-					      
-                                    });
+					var stringify = JSON.stringify(data);
+					
+					  var jsonObj = JSON.parse(stringify);
+					
+                                      console.log(jsonObj.id);
+					console.log(jsonObj.title);
 
                                 },
                                 error: function (data) {
