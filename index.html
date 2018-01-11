@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <title>CiscoSpark App</title>
-
-       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
- 
-    
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         var currentLocation = window.location.href;
 
@@ -43,14 +41,14 @@
                     success: function (r) {
                         var s = JSON.stringify(r);
                         var c = JSON.parse(s);
-                  
+
                         for (var i = 0; i < c.items.length; i++) {
                             var objPerson = c.items[i];
                             var roomId = objPerson.roomId;
                             console.log(objPerson.personDisplayName);
                             var title = null;
                             var roomURL = 'https://api.ciscospark.com/v1/rooms/' + roomId;
-                              console.log(roomURL);
+                            console.log(roomURL);
                             $.ajax({
                                 type: 'GET',
                                 url: roomURL,
@@ -67,80 +65,19 @@
                                     console.log(jsonObj.title);
                                     title = jsonObj.title;
                                     console.log("Title is " + title);
-                                       $('div.rooms > div.chat').append('<li id="' + jsonObj.id + '" class="btnMsg"><span>' + title + '</span></li>');
+                                    $('div.rooms > div.chat').append('<li id="' + jsonObj.id + '" class="btnMsg"><span>' + title + '</span></li>');
 
-                                       //   $('div.rooms > div.chat').append('<span class="title">' + title + ' </span>');
-     
+                                    //   $('div.rooms > div.chat').append('<span class="title">' + title + ' </span>');
+
                                 },
                                 error: function (data) {
                                 }
                             })
-                         //   $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn-success btnMsg"/>');
+                            //   $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn-success btnMsg"/>');
 
                             console.log("Title is " + title);
-                         //$('.btnMsg').on('click', function(){var obj = $(this); alert(obj.attr('id'));})
-                           $('.btnMsg').on('click', function (event) {
-                               
-                               
-                           
-                              var obj = this;
-                                var objId = obj.attr['id'];
-                                console.log("Room ID is" + objId);
-                                $('.messageChat').empty();
-
-                                var fruits = [];
-                                var msgUrl = 'https://api.ciscospark.com/v1/messages?roomId=' + objId;
-                                $.ajax({
-                                    type: 'GET',
-                                    url: msgUrl,
-                                    headers: {
-                                        'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
-                                        'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
-                                        'contentType': 'application/json; charset=utf-8',
-                                        'Authorization': auth
-                                    },
-                                    success: function (data) {
-                                        console.log("Messages receievd for this chat is " + data);
-                                        
-
-                                        var received = JSON.stringify(data);
-                                        var receivedobj = JSON.parse(received);
-                  
-                                        for (var i = 0; i < receivedobj.items.length; i++) {
-
-
-                                            
-                                            var objMessage = receivedobj.items[i];
-                                            var txt = objMessage.text;
-
-
-
-                                            fruits.push(txt);
-                                            console.log(txt);
-
-
-
-                                        }
-                                        fruits.reverse();
-                                            
-                                        
-                                var img = "https://d30y9cdsu7xlg0.cloudfront.net/png/5982-200.png";
-
-                                $.each(fruits, function (index, value) {
-                                    console.log(value);
-                                   
-                                    $('div.messageChat').append(' <img src='+img+' class="chatIcon"/><span class="chatMsg">' + value + ' </span><br>');
-
-                                });
-
-                                    },
-                                    error: function (data) {
-                                        alert(error);
-                                    }
-                                })
-                         event.stopPropagation();
-                        return;
-                           });
+                            //$('.btnMsg').on('click', function(){var obj = $(this); alert(obj.attr('id'));})
+                         
 
 
                         }
@@ -151,10 +88,74 @@
                 });
             });
 
+
+            $('.btnMsg').on('click', function (event) {
+
+
+
+                var obj = this;
+                var objId = obj.attr['id'];
+                console.log("Room ID is" + objId);
+                $('.messageChat').empty();
+
+                var fruits = [];
+                var msgUrl = 'https://api.ciscospark.com/v1/messages?roomId=' + objId;
+                $.ajax({
+                    type: 'GET',
+                    url: msgUrl,
+                    headers: {
+                        'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
+                        'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
+                        'contentType': 'application/json; charset=utf-8',
+                        'Authorization': auth
+                    },
+                    success: function (data) {
+                        console.log("Messages receievd for this chat is " + data);
+
+
+                        var received = JSON.stringify(data);
+                        var receivedobj = JSON.parse(received);
+
+                        for (var i = 0; i < receivedobj.items.length; i++) {
+
+
+
+                            var objMessage = receivedobj.items[i];
+                            var txt = objMessage.text;
+
+
+
+                            fruits.push(txt);
+                            console.log(txt);
+
+
+
+                        }
+                        fruits.reverse();
+
+
+                        var img = "https://d30y9cdsu7xlg0.cloudfront.net/png/5982-200.png";
+
+                        $.each(fruits, function (index, value) {
+                            console.log(value);
+
+                            $('div.messageChat').append(' <img src=' + img + ' class="chatIcon"/><span class="chatMsg">' + value + ' </span><br>');
+
+                        });
+
+                    },
+                    error: function (data) {
+                        alert(error);
+                    }
+                })
+                event.stopPropagation();
+                return;
+            });
+
         })
     </script>
-    
-    
+
+
     <style type="text/css">
         .chat {
             width: 200px;
@@ -165,6 +166,7 @@
 
         .btnMsg {
         }
+
         .heading {
             margin-left: 40%;
             margin-top: 13px;
@@ -175,64 +177,49 @@
             background-color: antiquewhite;
             box-shadow: 10px 10px 5px grey;
         }
+
         .marginLeft15 {
-        margin-left:5%;
-        margin-top:3%
-        
+            margin-left: 5%;
+            margin-top: 3%;
         }
-        
-         .messageChat {
-             border: 1px solid black;
-             width: 50%;
-             position: absolute;
-             left: 24%;
+
+        .messageChat {
+            border: 1px solid black;
+            width: 50%;
+            position: absolute;
+            left: 24%;
             top: 24%;
             overflow: auto;
             height: 300px !important;
             box-shadow: 5px 5px 5px grey;
         }
+
         .chatIcon {
-        
-        
-        width:20px;
-        height:20px;
-        
-        
+            width: 20px;
+            height: 20px;
         }
-        
-        .chatMsg{
-        padding-left: 12px;
-    padding-bottom: 12px;
+
+        .chatMsg {
+            padding-left: 12px;
+            padding-bottom: 12px;
         }
     </style>
-
 </head>
-
 <!-- Notice the controller directive -->
-<body >
-
-        <div class="heading"> Cisco Spark App</div>
-
-
+<body>
+    <div class="heading"> Cisco Spark App</div>
 
     <div class="marginLeft15">
-
         <input type="button" id="getRooms" value="Get Rooms" class="btn-default" />
         <div class="rooms">
             <div class="chat">
-
             </div>
         </div>
         <div class="messageChat">
 
-
         </div>
 
-
-
     </div>
-    
-
 
 
 </body>
