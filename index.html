@@ -80,7 +80,7 @@
                            $('.btnMsg').on('click', function (event) {
                                
                                
-                           event.preventDefault();
+                           
                               var obj = this;
                                 var objId = obj.id;
                                 console.log("Room ID is" + objId);
@@ -136,7 +136,8 @@
                                         alert(error);
                                     }
                                 })
-
+                         event.stopPropagation();
+                        return;
                            });
 
 
