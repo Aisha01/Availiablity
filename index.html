@@ -17,9 +17,9 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script>
         var currentLocation = window.location.href;
-        console.log(currentLocation);
+        
         var type = window.location.hash.substr(1);
-        console.log(type);
+      
 
 
         var accessToken = null;
@@ -31,13 +31,11 @@
             var currentItem = pathArray[i];
             if (i == 2) {
                 var splitByEqual = currentItem.split('=');
-                console.log(splitByEqual[0]);
-                console.log(splitByEqual[1]);
+                
                 accessToken = splitByEqual[1];
 
 
             }
-            console.log(currentItem);
 
         }
 
@@ -54,8 +52,7 @@
 
                 $('div.rooms > div.chat').empty();
 
-                console.log("I am called");
-                alert("hello" + auth);
+           
 
                 $.ajax({
                     type: 'GET',
@@ -71,17 +68,16 @@
 
                     success: function (r) {
 
-                        console.log(r);
                         var s = JSON.stringify(r);
                         var c = JSON.parse(s);
-                        console.log(c);
+                        
                         for (var i = 0; i < c.items.length; i++) {
                             var objPerson = c.items[i];
                             var roomId = objPerson.roomId;
 
-                            console.log(objPerson.id);
                             console.log(objPerson.personDisplayName);
                             var roomURL = 'https://api.ciscospark.com/v1/rooms/' + roomId;
+                            var title = null;
                             console.log(roomURL);
                             $.ajax({
                                 type: 'GET',
@@ -98,49 +94,18 @@
 
                                     var jsonObj = JSON.parse(stringify);
 
-                                    console.log(jsonObj.id);
                                     console.log(jsonObj.title);
-
-                                    $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
-
-
-                                    $('.btnMsg').on('click', function () {
-
-                                        var change = this;
-                                        console.log(change.id);
-                                        var rid = change.id;
-
-                                        var msgUrl = 'https://api.ciscospark.com/v1/messages?roomId=' + rid;
-                                        $.ajax({
-                                            type: 'GET',
-                                            url: msgUrl,
-                                            headers: {
-                                                'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
-                                                'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
-                                                'contentType': 'application/json; charset=utf-8',
-                                                'Authorization': auth
-                                            },
-                                            success: function (data) {
-                                                console.log(data);
-
-                                            },
-                                            error: function (data) {
-
-                                                console.log(data);
-                                            }
-
-
-
-                                        })
-						
-                				event.stopPropagation();
-                				return;
-                                    });
+                                    title = jsonObj.title;
+                                 
 
                                 },
                                 error: function (data) {
                                 }
                             })
+
+                            $('div.rooms > div.chat').append('<span class="title">' + title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
+
+
                         }
 
                     },
@@ -156,7 +121,6 @@
 
 
     </script>
-		
 	<style type="text/css">
         .chat {
            
