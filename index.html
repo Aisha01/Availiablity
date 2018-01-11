@@ -65,16 +65,17 @@
                                     console.log(jsonObj.title);
                                     title = jsonObj.title;
                                     console.log("Title is " + title);
-                                       $('div.rooms > div.chat').append('<span class="title">' + title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn-success btnMsg"/>');
-                          
-                           $('.btnMsg').on('click', function () { var c = this; alert(c.id); });
-
+                                
                                 },
                                 error: function (data) {
                                 }
                             })
 
                             console.log("Title is " + title);
+                           $('div.rooms > div.chat').append('<span class="title">' + title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn-success btnMsg"/>');
+                          
+                           $('.btnMsg').on('click', function () { var c = this; alert(c.id); });
+
 
                         }
                     },
