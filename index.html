@@ -108,6 +108,23 @@
 
                                             var objMessage = receivedobj.items[i];
                                             var txt = objMessage.text;
+                                            
+                                            var fruits = [];
+
+                                            fruits.push(txt);
+                                            $.each(fruits, function (index, value) {
+                                                console.log(value);
+
+                                            });
+
+                                            fruits.reverse();
+                                            $.each(fruits, function (index, value) {
+                                                console.log(value);
+
+                                            });
+
+                                           
+
 
 
                                             $('div.messageChat').append('<span>' + txt + ' </span></br>');
