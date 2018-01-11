@@ -78,7 +78,55 @@
                             console.log("Title is " + title);
                              $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn btn-success btnMsg"/>');
   
-                           $('.btnMsg').on('click', function () { var c = this; alert(c.id); });
+                           $('.btnMsg').on('click', function () {
+                           
+                               
+                                var obj = this;
+                                var objId = obj.id;
+                                console.log("Room ID is" + objId);
+                                $('.messageChat').empty();
+                                var msgUrl = 'https://api.ciscospark.com/v1/messages?roomId=' + objId;
+                                $.ajax({
+                                    type: 'GET',
+                                    url: msgUrl,
+                                    headers: {
+                                        'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
+                                        'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
+                                        'contentType': 'application/json; charset=utf-8',
+                                        'Authorization': auth
+                                    },
+                                    success: function (data) {
+                                        console.log("Messages receievd for this chat is " + data);
+                                        
+
+                                        var received = JSON.stringify(data);
+                                        var receivedobj = JSON.parse(received);
+                  
+                                        for (var i = 0; i < receivedobj.items.length; i++) {
+
+
+
+                                            var objMessage = receivedobj.items[i];
+                                            var txt = objMessage.text;
+
+
+                                            $('div.messageChat').append('<span>' + txt + ' </span>');
+
+
+
+                                        }
+
+                                    },
+                                    error: function (data) {
+                                        alert(error);
+                                    }
+                                })
+                               
+                               
+                           
+                           
+                           
+                           });
 
 
                         }
@@ -129,7 +177,6 @@
             top: 24%;
             min-height: 282px;
             box-shadow: 5px 5px 5px grey;
-            background-color: antiquewhite;
         }
     </style>
 
