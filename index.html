@@ -8,8 +8,7 @@
     
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" >
-
-    <script>
+<script>
         var currentLocation = window.location.href;
 
         var type = window.location.hash.substr(1);
@@ -42,13 +41,14 @@
                     success: function (r) {
                         var s = JSON.stringify(r);
                         var c = JSON.parse(s);
-                        var title = null;
+                  
                         for (var i = 0; i < c.items.length; i++) {
                             var objPerson = c.items[i];
                             var roomId = objPerson.roomId;
                             console.log(objPerson.personDisplayName);
+                            var title = null;
                             var roomURL = 'https://api.ciscospark.com/v1/rooms/' + roomId;
-                          console.log(roomURL);
+                           console.log(roomURL);
                             $.ajax({
                                 type: 'GET',
                                 url: roomURL,
@@ -59,20 +59,21 @@
                                     'Authorization': auth
                                 },
                                 success: function (data) {
-                                    console.log(data);
+                                    console.log("I am called inside roomUrl");
                                     var stringify = JSON.stringify(data);
                                     var jsonObj = JSON.parse(stringify);
                                     console.log(jsonObj.title);
                                     title = jsonObj.title;
-                                    $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br />');
+
 
                                 },
                                 error: function (data) {
                                 }
                             })
-   $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
+                            
+                            $('div.rooms > div.chat').append('<span class="title">' + title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
                             $('.btnMsg').on('click', function () { var c = this; alert(c.id); });
-                           
+
                         }
                     },
                     error: function (r) {
