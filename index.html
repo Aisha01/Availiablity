@@ -15,6 +15,7 @@
 		<![endif]-->
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
 		<script>
         var currentLocation = window.location.href;
         
@@ -77,7 +78,8 @@
 
                             console.log(objPerson.personDisplayName);
                             var roomURL = 'https://api.ciscospark.com/v1/rooms/' + roomId;
-                            
+                            $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
+
                             console.log(roomURL);
                             $.ajax({
                                 type: 'GET',
@@ -104,8 +106,7 @@
                                 }
                             })
 
-                            $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
-
+                      
 
                         }
 
@@ -117,6 +118,10 @@
                 });
 
             });
+
+
+
+            $('.btnMsg').on('click', function () { var c = this; alert(c.id); });
 
         })
 
