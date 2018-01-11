@@ -78,13 +78,13 @@
                          //   $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn-success btnMsg"/>');
 
                             console.log("Title is " + title);
-                         
+                         //$('.btnMsg').on('click', function(){var obj = $(this); alert(obj.attr('id'));})
                            $('.btnMsg').on('click', function (event) {
                                
                                
                            
                               var obj = this;
-                                var objId = obj.val;
+                                var objId = obj.attr['id'];
                                 console.log("Room ID is" + objId);
                                 $('.messageChat').empty();
 
