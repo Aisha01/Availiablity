@@ -119,10 +119,14 @@
 
                                         }
                                         fruits.reverse();
+                                            
+                                        
+                                var img = "https://d30y9cdsu7xlg0.cloudfront.net/png/5982-200.png";
 
                                 $.each(fruits, function (index, value) {
-                                    console.log("After reversing " + value);
-                                     $('div.messageChat').append('<span>' + value + ' </span><br>');
+                                    console.log(value);
+                                   
+                                    $('div.messageChat').append(' <img src='+img+' class="chatIcon"/><span>' + txt + ' </span><br>');
 
                                 });
 
@@ -189,6 +193,14 @@
             top: 24%;
             min-height: 282px;
             box-shadow: 5px 5px 5px grey;
+        }
+        .chatIcon {
+        
+        
+        width:20px;
+        height:20px;
+        
+        
         }
     </style>
 
