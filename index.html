@@ -126,7 +126,7 @@
                                 $.each(fruits, function (index, value) {
                                     console.log(value);
                                    
-                                    $('div.messageChat').append(' <img src='+img+' class="chatIcon"/><span>' + txt + ' </span><br>');
+                                    $('div.messageChat').append(' <img src='+img+' class="chatIcon"/><span class="chatMsg">' + value + ' </span><br>');
 
                                 });
 
@@ -136,12 +136,6 @@
                                     }
                                 })
 
-
-                                
-
-
-                           
-                           
                            });
 
 
@@ -201,6 +195,11 @@
         height:20px;
         
         
+        }
+        
+        .chatMsg{
+        padding-left: 12px;
+    padding-bottom: 12px;
         }
     </style>
 
