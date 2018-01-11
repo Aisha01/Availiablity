@@ -68,8 +68,7 @@
                                     title = jsonObj.title;
                                     console.log("Title is " + title);
                                           $('div.rooms > div.chat').append('<span class="title">' + title + ' </span>');
-                           
-                                
+     
                                 },
                                 error: function (data) {
                                 }
@@ -78,8 +77,10 @@
 
                             console.log("Title is " + title);
                          
-                           $('.btnMsg').on('click', function () {
-                           
+                           $('.btnMsg').on('click', function (event) {
+                               
+                               
+                           event.preventDefault();
                               var obj = this;
                                 var objId = obj.id;
                                 console.log("Room ID is" + objId);
@@ -97,7 +98,7 @@
                                         'Authorization': auth
                                     },
                                     success: function (data) {
-                                        console.log("Messages receievd for this caht is " + data);
+                                        console.log("Messages receievd for this chat is " + data);
                                         
 
                                         var received = JSON.stringify(data);
