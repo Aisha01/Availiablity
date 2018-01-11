@@ -117,6 +117,8 @@
 
                                             $.each(fruits, function (index, value) {
                                                 console.log("Inside ajax" + value);
+                                                
+                                            $('div.messageChat').append('<span>' + value + ' </span><br>');
 
                                             });
 
@@ -124,7 +126,6 @@
                                            
 
 
-                                            $('div.messageChat').append('<span>' + txt + ' </span><br>');
 
 
 
