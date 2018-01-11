@@ -80,11 +80,12 @@
   
                            $('.btnMsg').on('click', function () {
                            
-                               
-                                var obj = this;
+                              var obj = this;
                                 var objId = obj.id;
                                 console.log("Room ID is" + objId);
                                 $('.messageChat').empty();
+
+                                var fruits = [];
                                 var msgUrl = 'https://api.ciscospark.com/v1/messages?roomId=' + objId;
                                 $.ajax({
                                     type: 'GET',
@@ -96,7 +97,7 @@
                                         'Authorization': auth
                                     },
                                     success: function (data) {
-                                        console.log("Messages receievd for this chat is " + data);
+                                        console.log("Messages receievd for this caht is " + data);
                                         
 
                                         var received = JSON.stringify(data);
@@ -105,27 +106,20 @@
                                         for (var i = 0; i < receivedobj.items.length; i++) {
 
 
-
+                                            
                                             var objMessage = receivedobj.items[i];
                                             var txt = objMessage.text;
-                                            
-                                            var fruits = [];
+
+
 
                                             fruits.push(txt);
                                             
 
-                                            fruits.reverse();
-                                            console.log(fruits);
-                                            $.each(fruits, function (index, value) {
-                                                console.log(value);
-
-                                            });
 
                                            
 
 
-
-                                            $('div.messageChat').append('<span>' + txt + ' </span></br>');
+                                            $('div.messageChat').append('<span>' + txt + ' </span><br>');
 
 
 
@@ -136,9 +130,16 @@
                                         alert(error);
                                     }
                                 })
-                               
-                               
-                           
+
+
+                                fruits.reverse();
+
+                                $.each(fruits, function (index, value) {
+                                    console.log(value);
+
+                                });
+
+
                            
                            
                            });
