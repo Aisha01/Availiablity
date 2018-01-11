@@ -77,7 +77,7 @@
 
                             console.log(objPerson.personDisplayName);
                             var roomURL = 'https://api.ciscospark.com/v1/rooms/' + roomId;
-                            var title = null;
+                            
                             console.log(roomURL);
                             $.ajax({
                                 type: 'GET',
@@ -96,6 +96,7 @@
 
                                     console.log(jsonObj.title);
                                     title = jsonObj.title;
+                                    $('div.rooms > div.chat').append('<span class="title">' + jsonObj.title + ' </span><br />');
                                  
 
                                 },
@@ -103,7 +104,7 @@
                                 }
                             })
 
-                            $('div.rooms > div.chat').append('<span class="title">' + title + ' </span><br /><input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
+                            $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn button btnMsg"/>');
 
 
                         }
