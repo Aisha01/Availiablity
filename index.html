@@ -6,7 +6,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         var currentLocation = window.location.href;
@@ -66,78 +65,7 @@
                                     title = jsonObj.title;
                                     console.log("Title is " + title);
                                     $('div.rooms > div.chat').append('<li id="' + jsonObj.id + '" class="btnMsg"><span>' + title + '</span></li>');
-
-
-
-                                    $('li').on('click', function (event) {
-
-
-
-                                        var obj = this;
-                                        var objId = this.id;
-                                        console.log("Room ID is" + objId);
-                                        $('.messageChat').empty();
-
-                                        var fruits = [];
-                                        var msgUrl = 'https://api.ciscospark.com/v1/messages?roomId=' + objId;
-                                        $.ajax({
-                                            type: 'GET',
-                                            url: msgUrl,
-                                            headers: {
-                                                'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
-                                                'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
-                                                'contentType': 'application/json; charset=utf-8',
-                                                'Authorization': auth
-                                            },
-                                            success: function (data) {
-                                                console.log("Messages receievd for this chat is " + data);
-
-
-                                                var received = JSON.stringify(data);
-                                                var receivedobj = JSON.parse(received);
-
-                                                for (var i = 0; i < receivedobj.items.length; i++) {
-
-
-
-                                                    var objMessage = receivedobj.items[i];
-                                                    var txt = objMessage.text;
-
-
-
-                                                    fruits.push(txt);
-                                                    console.log(txt);
-
-
-
-                                                }
-                                                fruits.reverse();
-
-
-                                                var img = "https://d30y9cdsu7xlg0.cloudfront.net/png/5982-200.png";
-
-                                                $.each(fruits, function (index, value) {
-                                                    console.log(value);
-
-                                                    $('div.messageChat').append(' <img src=' + img + ' class="chatIcon"/><span class="chatMsg">' + value + ' </span><br>');
-
-                                                });
-
-                                            },
-                                            error: function (data) {
-                                                alert(error);
-                                            }
-                                        })
-
-
-                                        event.stopPropagation();
-                                        return;
-
-                                    });
-
-
-
-                                    //   $('div.rooms > div.chat').append('<span class="title">' + title + ' </span>');
+                                //   $('div.rooms > div.chat').append('<span class="title">' + title + ' </span>');
 
                                 },
                                 error: function (data) {
@@ -150,7 +78,72 @@
 
                             console.log("Title is " + title);
                             //$('.btnMsg').on('click', function(){var obj = $(this); alert(obj.attr('id'));})
-                         
+
+                            $('li').on('click', function (event) {
+
+
+
+                                var obj = this;
+                                var objId = this.id;
+                                console.log("Room ID is" + objId);
+                                $('.messageChat').empty();
+
+                                var fruits = [];
+                                var msgUrl = 'https://api.ciscospark.com/v1/messages?roomId=' + objId;
+                                $.ajax({
+                                    type: 'GET',
+                                    url: msgUrl,
+                                    headers: {
+                                        'Access-Control-Allow-Origin': 'https://availiable.azurewebsites.net',
+                                        'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
+                                        'contentType': 'application/json; charset=utf-8',
+                                        'Authorization': auth
+                                    },
+                                    success: function (data) {
+                                        console.log("Messages receievd for this chat is " + data);
+
+
+                                        var received = JSON.stringify(data);
+                                        var receivedobj = JSON.parse(received);
+
+                                        for (var i = 0; i < receivedobj.items.length; i++) {
+
+
+
+                                            var objMessage = receivedobj.items[i];
+                                            var txt = objMessage.text;
+
+
+
+                                            fruits.push(txt);
+                                            console.log(txt);
+
+
+
+                                        }
+                                        fruits.reverse();
+
+
+                                        var img = "https://d30y9cdsu7xlg0.cloudfront.net/png/5982-200.png";
+
+                                        $.each(fruits, function (index, value) {
+                                            console.log(value);
+
+                                            $('div.messageChat').append(' <img src=' + img + ' class="chatIcon"/><span class="chatMsg">' + value + ' </span><br>');
+
+                                        });
+
+                                    },
+                                    error: function (data) {
+                                        alert(error);
+                                    }
+                                })
+
+
+                                event.stopPropagation();
+                                return;
+
+                            });
 
 
                         }
@@ -169,7 +162,6 @@
 
         })
     </script>
-
 
     <style type="text/css">
         .chat {
@@ -223,7 +215,6 @@
 <!-- Notice the controller directive -->
 <body>
     <div class="heading"> Cisco Spark App</div>
-
     <div class="marginLeft15">
         <input type="button" id="getRooms" value="Get Rooms" class="btn-default" />
         <div class="rooms">
@@ -231,11 +222,8 @@
             </div>
         </div>
         <div class="messageChat">
-
         </div>
-
     </div>
-
 
 </body>
 </html>
