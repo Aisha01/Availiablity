@@ -65,6 +65,8 @@
                                     title = jsonObj.title;
                                     console.log("Title is " + title);
                                     $('div.rooms > div.chat').append('<li id="' + jsonObj.id + '" class="btnMsg"><span>' + title + '</span></li>');
+                                 
+                                    bind_event(c);
                                     //   $('div.rooms > div.chat').append('<span class="title">' + title + ' </span>');
                                     $('li').on('click', function (event) {
 
@@ -117,7 +119,7 @@
                                                     console.log(value);
 
                                                     $('div.messageChat').append(' <img src=' + img + ' class="chatIcon"/><span class="chatMsg">' + value + ' </span><br>');
-
+                                                        
                                                 });
 
                                             },
@@ -141,7 +143,7 @@
                             
                             console.log("for loop for getting rooms" + i);
 
-                            bind_event(c);
+                            
 
 
                         }
