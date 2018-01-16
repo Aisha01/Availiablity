@@ -93,9 +93,14 @@
             });
 
             $('.chat').on('click', 'li ', function () {
-                var thisButton = $(this); //Get the button that was clicked
-                var prnt = thisButton.parent(); //Get its parent
-                alert(thisButton.id);
+               
+                
+                                        var obj = this;
+                                        var objId = this.id;
+                                        console.log("Room ID is" + objId);
+                                        alert(objId);
+                
+                
             });
 
 
