@@ -157,12 +157,8 @@
 
 
             function bind_event(t) {
-                var td = document.getElementById('td' + t);
-                if (typeof window.addEventListener === 'function') {
-                    td.addEventListener('click', function () {
-                        console.log(td);
-                    });
-                }
+                
+                console.log(t);
             }
 
         })
