@@ -75,7 +75,7 @@
                                         var objId = this.id;
                                         console.log("Room ID is" + objId);
                                         $('.messageChat').empty();
-
+                                       
                                         var fruits = [];
                                         var msgUrl = 'https://api.ciscospark.com/v1/messages?roomId=' + objId;
                                         $.ajax({
@@ -140,13 +140,7 @@
 
 
                             })
-                            //   $('div.rooms > div.chat').append('<input type="button" name="Message" id=" ' + objPerson.roomId + '" value="Start Chat" class="btn-success btnMsg"/>');
-//
-                           // console.log("Title is " + title);
-                            //$('.btnMsg').on('click', function(){var obj = $(this); alert(obj.attr('id'));})
-                           // $('div.rooms > div.chat').append('<li id="' + roomId + '" class="btnMsg"></li>');
-
-
+                           
 
                         }
 
@@ -215,6 +209,23 @@
             padding-left: 12px;
             padding-bottom: 12px;
         }
+
+        .msgSent {
+            position: absolute;
+            left: 24%;
+            top: 72%;
+        }
+        .Left15 {
+        margin-left:15px;
+        
+        }
+
+        .width250 {
+        
+        width:250px;
+        }
+
+
     </style>
 </head>
 <!-- Notice the controller directive -->
@@ -227,7 +238,16 @@
             </div>
         </div>
         <div class="messageChat">
+            
         </div>
+        
+
+        
+    </div>
+    <div class="msgSent">
+        <input type="text" id="myText" class="width250" 
+               title="Message" />
+        <input type="button" title="Send Message" value="Send Message" class="Left15"/>
     </div>
 
 </body>
