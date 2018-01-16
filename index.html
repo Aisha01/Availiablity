@@ -40,7 +40,7 @@
                     success: function (r) {
                         var s = JSON.stringify(r);
                         var c = JSON.parse(s);
-
+                   
                         for (var i = 0; i < c.items.length; i++) {
                             var objPerson = c.items[i];
                             var roomId = objPerson.roomId;
@@ -91,7 +91,8 @@
                     }
                 });
             });
-                $('.chat').on('click', 'li ', function () {
+
+            $('.chat').on('click', 'li ', function () {
                 
 
 
@@ -159,8 +160,6 @@
             });
 
 
-
-
         })
     </script>
 
@@ -173,7 +172,7 @@
         }
 
         .btnMsg {
-            border: 1px solid black;
+            cursor:help;
             list-style-type: none;
             padding: 10px 5px;
         }
