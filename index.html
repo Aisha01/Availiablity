@@ -92,6 +92,8 @@
                 });
             });
 
+            var RoomID = null;
+
             $('.chat').on('click', 'li ', function () {
                 
 
@@ -99,8 +101,7 @@
                 var obj = this;
                 var objId = this.id;
                 console.log("Room ID is" + objId);
-                $('#btnMsg').attr('id', objId);
-
+                RoomID = objId;
                 $('.messageChat').empty();
 
                 var fruits = [];
@@ -161,8 +162,7 @@
 
             $('#btnMsg').on('click', function () {
 
-                var objId = this.id;
-                alert(objId);
+                alert('send the message to roomID' + RoomID);
 
 
             });
